@@ -25,7 +25,7 @@ class slime {
 
   void update() {
     v.y += g;
-    
+
     if (moveLeft) {
       v.x += -8;
     }
@@ -45,5 +45,14 @@ class slime {
     }
 
     v.x = 0;
+
+    if (s.x.x+s.r >= width) {
+      s.moveRight = false;
+      s.x.x = width-s.r;
+    }
+    if (s.x.x-s.r <= 0) {
+      s.moveLeft = false;
+      s.x.x = 0+s.r;
+    }
   }
 }
