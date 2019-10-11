@@ -3,8 +3,8 @@ class ball {
   float r;
 
   ball() {
-    x = new PVector(width/2,height/2);
-    v = new PVector(0,0);
+    x = new PVector(width/2, height/2);
+    v = new PVector(0, 0);
     r = 20;
   }
 
@@ -13,9 +13,6 @@ class ball {
     fill(255, 0, 0);
     ellipse(x.x, x.y, 2*r, 2*r);
     fill(0);
-    textSize(30);
-    textAlign(CENTER);
-    text("Scoren er "+score,width/2,50);
   }
 
   void update() {
@@ -25,11 +22,11 @@ class ball {
       v.mult(0.99);
       v.y += g;
     }
-    
+
     if (x.y == 0) {
       v.mult(0.7);
     }
-    
+
     v.limit(20);
     x.add(v);
 
@@ -45,6 +42,13 @@ class ball {
       x.x = 0 + r;
       v.x = -v.x;
     }
+    if (withinRect(x.x,x.y,goal_xpos,goal_ypos,goal_w,goal_h)) {
+      s.score += 1;
+    }
+
+ //   if (withinRect(x.x,x.y,width-goal_w,0,goal_w,goal_h)) {
+//      s2.score += 1;
+//    }
   }
 
   void bounce(slime s) {
@@ -55,5 +59,12 @@ class ball {
     x.add(n.setMag(distanceCor));
     x.add(s.v);
     v.mult(1.5);
+  }
+  boolean withinRect(float x, float y, float a, float b, float w, float h) {
+    if (dist(x, 0, a,0 ) <= w && dist(0,y,0,b) <= h) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
