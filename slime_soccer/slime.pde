@@ -2,7 +2,8 @@ class slime {
   PVector x, v;
   float r;
   boolean jump, moveLeft, moveRight;
-
+  int score;
+  
   slime() {
     r = 65;
     x = new PVector(100, 100);
@@ -21,6 +22,9 @@ class slime {
     ellipse(x.x+40, x.y-42, 0.5*r, 0.5*r);
     fill(0);
     ellipse(x.x+48, x.y-42, 0.2*r, 0.2*r);
+    textSize(30);
+    textAlign(CENTER);
+    text("Scoren er "+score,width/2,50);
   }
 
   void update() {
