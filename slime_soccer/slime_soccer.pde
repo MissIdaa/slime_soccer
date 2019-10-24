@@ -9,6 +9,8 @@ int goal_w;
 int goal_h;
 int goal_xpos;
 int goal_ypos;
+int goal2_xpos;
+int goal2_ypos;
 
 void setup() {
   size(865, 450);
@@ -20,6 +22,8 @@ void setup() {
   goal_h = 125;
   goal_xpos = 0;
   goal_ypos = height-goal_h;
+  goal2_xpos = width-goal_w;
+  goal2_ypos = height-goal_h;
 }
 
 void draw() {
@@ -34,6 +38,7 @@ void draw() {
   noFill();
   strokeWeight(5);
   rect(goal_xpos, goal_ypos, goal_w, goal_h);
+  rect(goal2_xpos, goal2_ypos, goal_w, goal_h);
   strokeWeight(2);
   
   t = interval-int(millis()/1000);
