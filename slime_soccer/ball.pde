@@ -2,6 +2,7 @@ class ball {
   PVector x, v;
   float r;
   boolean stop;
+  boolean stop2;
 
   ball() {
     x = new PVector(width/2, height/2);
@@ -12,7 +13,7 @@ class ball {
 
   void render() {
     noStroke();
-    fill(255, 0, 0);
+    fill(0, 0, 0);
     ellipse(x.x, x.y, 2*r, 2*r);
     fill(0);
   }
@@ -20,6 +21,8 @@ class ball {
   void update() {
     if (dist(x.x, x.y, s.x.x, s.x.y) < r + s.r) {
       bounce(s);
+    } else if (dist(x.x, x.y, s2.x.x, s2.x.y) < r + s2.r) {
+      bounce(s2);
     } else {
       v.mult(0.99);
       v.y += g;
@@ -46,15 +49,35 @@ class ball {
     }
     if (withinRect(x.x, x.y, goal_xpos, goal_ypos, goal_w) && stop == true) {
       s.score += 1;
+      s.x.x = 100;
+      s.x.y = 100;
+      s2.x.x = 765;
+      s2.x.y = 100;
+      x.x = width/2;
+      x.y = height/2;
+      v.x = 0;
+      x.y = 0;
       stop = false;
     }
     if (!withinRect(x.x, x.y, goal_xpos, goal_ypos, goal_w)) {
       stop = true;
     }
-
-    //   if (withinRect(x.x,x.y,width-goal_w,0,goal_w)) {
-    //      s2.score += 1;
-    //    }
+    if (withinRect(x.x, x.y, goal2_xpos, goal2_ypos, goal_w) && stop2 == true) {
+      s2.score += 1;
+      s.score += 1;
+      s.x.x = 100;
+      s.x.y = 100;
+      s2.x.x = 765;
+      s2.x.y = 100;
+      x.x = width/2;
+      x.y = height/2;
+      v.x = 0;
+      x.y = 0;
+      stop2 = false;
+    }
+    if (!withinRect(x.x, x.y, goal2_xpos, goal2_ypos, goal_w)) {
+      stop2 = true;
+    }
   }
 
   void bounce(slime s) {

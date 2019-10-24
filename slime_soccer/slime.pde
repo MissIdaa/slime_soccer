@@ -3,28 +3,38 @@ class slime {
   float r;
   boolean jump, moveLeft, moveRight;
   int score;
-  
-  slime() {
+  color farve;
+  String eye;
+
+  slime(int tempX, int tempY, color tempFarve, String tempEye) {
     r = 65;
-    x = new PVector(100, 100);
+    x = new PVector(tempX, tempY);
     v = new PVector(0, 0);
     jump = false;
     moveLeft = false;
     moveRight = false;
+    farve = tempFarve;
+    eye = tempEye;
   }
 
   void render() {
     noStroke();
-    fill(0, 255, 0);
+    fill(farve);
     arc(x.x, x.y, 2*r, 2*r, PI, TWO_PI);
     stroke(0);
     fill(255);
-    ellipse(x.x+40, x.y-42, 0.5*r, 0.5*r);
-    fill(0);
-    ellipse(x.x+48, x.y-42, 0.2*r, 0.2*r);
+    if (eye == "højre") {
+      ellipse(x.x+40, x.y-42, 0.5*r, 0.5*r);
+      fill(0);
+      ellipse(x.x+48, x.y-42, 0.2*r, 0.2*r);
+    } else if (eye == "venstre") {
+      ellipse(x.x-40, x.y-42, 0.5*r, 0.5*r);
+      fill(0);
+      ellipse(x.x-48, x.y-42, 0.2*r, 0.2*r);
+    }
     textSize(30);
     textAlign(CENTER);
-    text("Scoren er "+score,width/2,50);
+    text("Scoren er "+score, x.x, 50);
   }
 
   void update() {
@@ -50,13 +60,13 @@ class slime {
 
     v.x = 0;
 
-    if (s.x.x+s.r >= width) {
-      s.moveRight = false;
-      s.x.x = width-s.r;
+    if (x.x+r >= width) {
+      moveRight = false;
+      x.x = width-r;
     }
-    if (s.x.x-s.r <= 0) {
-      s.moveLeft = false;
-      s.x.x = 0+s.r;
+    if (x.x-r <= 0) {
+      moveLeft = false;
+      x.x = 0+r;
     }
   }
 }
