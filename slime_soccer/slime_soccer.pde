@@ -14,8 +14,8 @@ int goal_ypos;
 void setup() {
   size(865, 450);
   b = new ball();
-  s = new slime(100, 100, color(0,255,0));
-  s2 = new slime(765, 100, color(255,0,0));
+  s = new slime(100, 100, color(0,255,0),"højre");
+  s2 = new slime(765, 100, color(255,0,0),"venstre");
   fill(0);
   font = createFont("Arial", 50);
   goal_w = 110;

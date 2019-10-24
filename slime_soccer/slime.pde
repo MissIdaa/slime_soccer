@@ -4,8 +4,9 @@ class slime {
   boolean jump, moveLeft, moveRight;
   int score;
   color farve;
+  String eye;
   
-  slime(int tempX, int tempY, color tempFarve) {
+  slime(int tempX, int tempY, color tempFarve, String tempEye) {
     r = 65;
     x = new PVector(tempX, tempY);
     v = new PVector(0, 0);
@@ -13,6 +14,7 @@ class slime {
     moveLeft = false;
     moveRight = false;
     farve = tempFarve;
+    eye = tempEye;
   }
 
   void render() {
@@ -21,9 +23,16 @@ class slime {
     arc(x.x, x.y, 2*r, 2*r, PI, TWO_PI);
     stroke(0);
     fill(255);
+    if (eye == "højre"){
     ellipse(x.x+40, x.y-42, 0.5*r, 0.5*r);
     fill(0);
     ellipse(x.x+48, x.y-42, 0.2*r, 0.2*r);
+    }
+     else if (eye == "venstre"){
+    ellipse(x.x-40, x.y-42, 0.5*r, 0.5*r);
+    fill(0);
+    ellipse(x.x-48, x.y-42, 0.2*r, 0.2*r);
+    }
     textSize(30);
     textAlign(CENTER);
     text("Scoren er "+score,x.x,50);
