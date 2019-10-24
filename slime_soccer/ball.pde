@@ -12,7 +12,7 @@ class ball {
 
   void render() {
     noStroke();
-    fill(255, 0, 0);
+    fill(0, 0, 0);
     ellipse(x.x, x.y, 2*r, 2*r);
     fill(0);
   }
@@ -20,11 +20,15 @@ class ball {
   void update() {
     if (dist(x.x, x.y, s.x.x, s.x.y) < r + s.r) {
       bounce(s);
-    } else {
+    }
+    else if(dist(x.x, x.y, s2.x.x, s2.x.y) < r + s2.r){
+      bounce(s2);
+    }
+    else {
       v.mult(0.99);
       v.y += g;
     }
-
+    
     if (x.y == 0) {
       v.mult(0.7);
     }
