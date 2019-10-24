@@ -49,6 +49,14 @@ class ball {
     }
     if (withinRect(x.x, x.y, goal_xpos, goal_ypos, goal_w) && stop == true) {
       s.score += 1;
+      s.x.x = 100;
+      s.x.y = 100;
+      s2.x.x = 765;
+      s2.x.y = 100;
+      x.x = width/2;
+      x.y = height/2;
+      v.x = 0;
+      x.y = 0;
       stop = false;
     }
     if (!withinRect(x.x, x.y, goal_xpos, goal_ypos, goal_w)) {
@@ -56,6 +64,15 @@ class ball {
     }
     if (withinRect(x.x, x.y, goal2_xpos, goal2_ypos, goal_w) && stop2 == true) {
       s2.score += 1;
+      s.score += 1;
+      s.x.x = 100;
+      s.x.y = 100;
+      s2.x.x = 765;
+      s2.x.y = 100;
+      x.x = width/2;
+      x.y = height/2;
+      v.x = 0;
+      x.y = 0;
       stop2 = false;
     }
     if (!withinRect(x.x, x.y, goal2_xpos, goal2_ypos, goal_w)) {
