@@ -16,15 +16,15 @@ int goal2_ypos;
 void setup() {
   size(865, 450);
   b = new ball();
-  s = new slime(100, 100, color(0,255,0),"højre");
-  s2 = new slime(765, 100, color(255,0,0),"venstre");
+  s = new slime(100, 100, color(0, 255, 0), "højre");
+  s2 = new slime(765, 100, color(255, 0, 0), "venstre");
   fill(0);
   font = createFont("Arial", 50);
   goal_w = 110;
   goal_h = 125;
   goal_xpos = 0;
   goal_ypos = height-goal_h;
-  goal2_xpos = width-goal_w;
+  goal2_xpos = width;
   goal2_ypos = height-goal_h;
 }
 
@@ -42,7 +42,7 @@ void draw() {
   noFill();
   strokeWeight(5);
   rect(goal_xpos, goal_ypos, goal_w, goal_h);
-  rect(goal2_xpos, goal2_ypos, goal_w, goal_h);
+  rect(goal2_xpos, goal2_ypos, -goal_w, goal_h);
   strokeWeight(2);
 
   t = interval-int(millis()/1000);

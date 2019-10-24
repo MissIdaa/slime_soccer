@@ -2,6 +2,7 @@ class ball {
   PVector x, v;
   float r;
   boolean stop;
+  boolean stop2;
 
   ball() {
     x = new PVector(width/2, height/2);
@@ -20,15 +21,13 @@ class ball {
   void update() {
     if (dist(x.x, x.y, s.x.x, s.x.y) < r + s.r) {
       bounce(s);
-    }
-    else if(dist(x.x, x.y, s2.x.x, s2.x.y) < r + s2.r){
+    } else if (dist(x.x, x.y, s2.x.x, s2.x.y) < r + s2.r) {
       bounce(s2);
-    }
-    else {
+    } else {
       v.mult(0.99);
       v.y += g;
     }
-    
+
     if (x.y == 0) {
       v.mult(0.7);
     }
@@ -55,10 +54,13 @@ class ball {
     if (!withinRect(x.x, x.y, goal_xpos, goal_ypos, goal_w)) {
       stop = true;
     }
-
-    //   if (withinRect(x.x,x.y,width-goal_w,0,goal_w)) {
-    //      s2.score += 1;
-    //    }
+    if (withinRect(x.x, x.y, goal2_xpos, goal2_ypos, goal_w) && stop2 == true) {
+      s2.score += 1;
+      stop2 = false;
+    }
+    if (!withinRect(x.x, x.y, goal2_xpos, goal2_ypos, goal_w)) {
+      stop2 = true;
+    }
   }
 
   void bounce(slime s) {
